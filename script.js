@@ -130,6 +130,15 @@ function getVal(id)    { return (document.getElementById(id) || { value: '' }).v
 function getRadio(nm)  { const el = document.querySelector(`input[name="${nm}"]:checked`); return el ? el.value : ''; }
 function getChecks(nm) { return [...document.querySelectorAll(`input[name="${nm}"]:checked`)].map(e => e.value); }
 
+function getQ4Value() {
+  const v = getRadio('q4');
+  if (v === 'その他') {
+    const other = getVal('q4-other-text');
+    return other ? `その他（${other}）` : 'その他';
+  }
+  return v || '';
+}
+
 function getQ6Values() {
   return getChecks('q6').map(v => {
     if (v === 'その他') {
@@ -139,6 +148,17 @@ function getQ6Values() {
     return v;
   });
 }
+
+function getQ9Values() {
+  return getChecks('q9').map(v => {
+    if (v === 'その他') {
+      const other = getVal('q9-other-text');
+      return other ? `その他（${other}）` : 'その他';
+    }
+    return v;
+  });
+}
+
 function getQ12Values() {
   return getChecks('q12').map(v => {
     if (v === 'その他') {
@@ -174,12 +194,24 @@ function highlightChecked(groupId) {
   });
 }
 
-// ===== その他入力欄の開閉 =====
+// ===== その他入力欄の開閉（チェックボックス用） =====
 function toggleOtherInput(checkId, wrapId) {
   const checked = document.getElementById(checkId).checked;
   const wrap = document.getElementById(wrapId);
   wrap.classList.toggle('show', checked);
   if (!checked) {
+    const ta = wrap.querySelector('textarea');
+    if (ta) ta.value = '';
+  }
+}
+
+// ===== その他入力欄の開閉（ラジオボタン用）
+// onchangeに常時呼び出し、「その他」ラジオの現在値で開閉を判断 =====
+function toggleOtherInputRadio(radioId, wrapId) {
+  const isOtherSelected = document.getElementById(radioId).checked;
+  const wrap = document.getElementById(wrapId);
+  wrap.classList.toggle('show', isOtherSelected);
+  if (!isOtherSelected) {
     const ta = wrap.querySelector('textarea');
     if (ta) ta.value = '';
   }
@@ -192,9 +224,9 @@ function updateProgress() {
   if (!startTime) startTime = new Date();
   const items = [
     getVal('q1'), getVal('q2'), getVal('q2b'),
-    getRadio('q3'), getRadio('q4'),
+    getRadio('q3'), getQ4Value(),
     getRadio('q5'), getChecks('q6').length > 0 ? '1' : '',
-    getVal('q7'), getVal('q8'), getChecks('q9').length > 0 ? '1' : '',
+    getVal('q7'), getVal('q8'), getQ9Values().length > 0 ? '1' : '0',
     getVal('q10'), getRadio('q11'), getChecks('q12').length > 0 ? '1' : '', getVal('q13')
   ];
   const filled = items.filter(v => v !== '').length;
@@ -282,7 +314,7 @@ function onIdeaInput() {
 // ============================================================
 function buildText() {
   const q6v  = getQ6Values();
-  const q9v  = getChecks('q9');
+  const q9v  = getQ9Values();
   const q12v = getQ12Values();
   const ideaTypes = getIdeaTypes();
   const endTime = new Date();
@@ -312,7 +344,7 @@ function buildText() {
     `ITレベル評価　：${getItLevelLabel() || '（未評価）'}`,
     '',
     '【P：現場の困りごと・背景】',
-    `困っている対象：${getRadio('q4') || '（未選択）'}`,
+    `困っている対象：${getQ4Value() || '（未選択）'}`,
     `発生頻度　　　：${getRadio('q5') || '（未選択）'}`,
     `困りごと・影響：${q6v.join(' / ') || '（未選択）'}`,
     `具体的な場面　：${getVal('q7') || '（未記入）'}`,
@@ -405,7 +437,7 @@ function buildCsvText() {
   const submissionId = now.toISOString().replace(/[-:T.Z]/g, '').slice(0, 15);
   const submittedAt  = now.toLocaleString('ja-JP');
   const q6v  = getQ6Values();
-  const q9v  = getChecks('q9');
+  const q9v  = getQ9Values();
   const q12v = getQ12Values();
   const ideaTypes = getIdeaTypes();
   const diffMs = startTime ? now - startTime : 0;
@@ -421,7 +453,7 @@ function buildCsvText() {
   addRow('q2_name',             getVal('q2'));
   addRow('q2b_email',           getVal('q2b'));
   addRow('q3_occupation',       getRadio('q3'));
-  addRow('q4_who_suffers',      getRadio('q4'));
+  addRow('q4_who_suffers',      getQ4Value());
   addRow('q5_frequency',        getRadio('q5'));
   if (q6v.length > 0) { q6v.forEach((v, idx) => addRow(`q6_problem_${idx+1}`, v)); }
   else addRow('q6_problem_1', '');
@@ -567,7 +599,7 @@ function showPreview() {
   }
   document.getElementById('previewText').textContent = buildPreviewText();
   const idea     = getVal('q10');
-  const who      = getRadio('q4');
+  const who      = getQ4Value();
   const freq     = getRadio('q5');
   const category = getRadio('q11');
   const outcomes = getQ12Values();

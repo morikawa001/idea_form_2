@@ -161,10 +161,14 @@
     <div class="field-block">
       <label class="field-label">主に困っているのは？ <span class="req-badge">必須</span></label>
       <div class="card-radio-group" id="q4">
-        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="患者さん" onchange="onRadioChange('q4')"><span>患者さん</span></label>
-        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="自分自身・自部署のスタッフ" onchange="onRadioChange('q4')"><span>自分<br>自部署のスタッフ</span></label>
-        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="他部署のスタッフ" onchange="onRadioChange('q4')"><span>他部署のスタッフ</span></label>
-        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="病院全体" onchange="onRadioChange('q4')"><span>病院全体</span></label>
+        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="患者さん" onchange="onRadioChange('q4'); toggleOtherInputRadio('q4-other-check','q4-other-wrap')"><span>患者さん</span></label>
+        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="自分自身・自部署のスタッフ" onchange="onRadioChange('q4'); toggleOtherInputRadio('q4-other-check','q4-other-wrap')"><span>自分<br>自部署のスタッフ</span></label>
+        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="他部署のスタッフ" onchange="onRadioChange('q4'); toggleOtherInputRadio('q4-other-check','q4-other-wrap')"><span>他部署のスタッフ</span></label>
+        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="病院全体" onchange="onRadioChange('q4'); toggleOtherInputRadio('q4-other-check','q4-other-wrap')"><span>病院全体</span></label>
+        <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="その他" id="q4-other-check" onchange="onRadioChange('q4'); toggleOtherInputRadio('q4-other-check','q4-other-wrap')"><span>📝 その他</span></label>
+      </div>
+      <div class="other-input-wrap" id="q4-other-wrap">
+        <textarea id="q4-other-text" placeholder="該当するものを自由に書いてください" oninput="updateProgress()"></textarea>
       </div>
       <div class="field-fb" id="fb-q4"></div>
     </div>
@@ -252,6 +256,10 @@
         <label class="card-check"><input type="checkbox" name="q9" value="根本的な解決（安全確保など）になっていない" onchange="onCheckChange('q9')"><span>🔓 根本的な解決になっていない</span></label>
         <label class="card-check"><input type="checkbox" name="q9" value="消耗品費などのコストがかかる" onchange="onCheckChange('q9')"><span>💸 コストがかかる</span></label>
         <label class="card-check"><input type="checkbox" name="q9" value="スタッフへの教育コストが高い" onchange="onCheckChange('q9')"><span>📚 教育・引き継ぎに手間がかかる</span></label>
+        <label class="card-check"><input type="checkbox" name="q9" value="その他" id="q9-other-check" onchange="onCheckChange('q9'); toggleOtherInput('q9-other-check','q9-other-wrap')"><span>📝 その他</span></label>
+      </div>
+      <div class="other-input-wrap" id="q9-other-wrap">
+        <textarea id="q9-other-text" placeholder="その他の問題点を自由に書いてください" oninput="updateProgress()"></textarea>
       </div>
       <div class="field-fb" id="fb-q9"></div>
     </div>
@@ -459,7 +467,7 @@
     </div>
     <div class="modal-btn-row">
       <button class="btn-mail" onclick="showSurveyFromPreview()">✉️ アンケートへ移動</button>
-      <button class="btn-close" onclick="closePreviewAndThank()">✖ 閉じる</button>
+      <button class="btn-close" onclick="closePreviewModal()">← 戻る</button>
     </div>
   </div>
 </div>
