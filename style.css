@@ -60,7 +60,7 @@ body {
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 8px;
 }
-.brand-logo { flex-shrink: 0; width: 26px; height: 26px; }
+.brand-logo { flex-shrink: 0; width: 52px; height: 52px; }
 .brand-title {
   font-size: 2.4em; font-weight: 700;
   letter-spacing: .02em;
