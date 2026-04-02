@@ -530,15 +530,19 @@ function submitAll() {
 // ============================================================
 //  カウントダウン - 変更なし
 // ============================================================
+let _closeTimer = null;  // ウィンドウクローズタイマー（新しいアイデア提案時に停止するためスコープ外に保持）
+
 function startCloseCountdown(seconds) {
+  if (_closeTimer) { clearInterval(_closeTimer); _closeTimer = null; }
   let remaining = seconds;
   const countdownEl = document.getElementById('close-countdown');
   if (countdownEl) countdownEl.textContent = remaining;
-  const timer = setInterval(() => {
+  _closeTimer = setInterval(() => {
     remaining--;
     if (countdownEl) countdownEl.textContent = remaining;
     if (remaining <= 0) {
-      clearInterval(timer);
+      clearInterval(_closeTimer);
+      _closeTimer = null;
       window.close();
       setTimeout(() => {
         const thankModal = document.getElementById('thankModal');
@@ -608,6 +612,8 @@ function closePreviewAndThank() {
 //  リセット・再提案
 // ============================================================
 function startNewIdea() {
+  // 自動クローズのカウントダウンを停止してからリセット（次の提案を正常に入力できるように）
+  if (_closeTimer) { clearInterval(_closeTimer); _closeTimer = null; }
   closeThankModal();
   resetForm();
 }
@@ -644,6 +650,12 @@ function resetForm() {
   if (charCount) charCount.textContent = '0文字';
 
   startTime = null;
+  // プレビューボタンのグレーアウトを解除（再提案時に再度確認できるように）
+  const previewBtn = document.querySelector('.btn-preview');
+  if (previewBtn) {
+    previewBtn.disabled = false;
+    previewBtn.classList.remove('btn-grayed');
+  }
   showFormUI();
   document.getElementById('endScreen').classList.remove('active');
   showStep(0);
