@@ -26,8 +26,7 @@
       </div>
     </div>
     <div class="header-desc">
-      業務の中で「こうだったら助かる」「これ不便だな」と感じたことを教えてください。<br>
-      専門知識は不要です。アイデアのたたき台として活用します。
+      「こうだったら助かる」と感じたことを、そのまま教えてください。
     </div>
   </div>
 </header>
@@ -91,8 +90,7 @@
   <section class="step-section active" id="step0">
     <div class="step-header">
       <div class="step-num">1 / 5</div>
-      <h2 class="step-title">基本情報の入力</h2>
-      <p class="step-desc">アイデアの検討結果をお知らせするために、以下の情報が必要です。</p>
+      <h2 class="step-title">基本情報</h2>
     </div>
 
     <div class="field-block">
@@ -118,15 +116,13 @@
 
     <div class="field-block">
       <label class="field-label" for="q2">氏名 <span class="req-badge">必須</span></label>
-      <p class="field-note">検討結果のご連絡先として使用します</p>
-      <input type="text" id="q2" placeholder="例：山田 花子" oninput="onTextInput('q2')" autocomplete="name" required>
+      <input type="text" id="q2" placeholder="山田 花子" oninput="onTextInput('q2')" autocomplete="name" required>
       <div class="field-fb" id="fb-q2"></div>
     </div>
 
     <div class="field-block">
       <label class="field-label" for="q2b">返信先メールアドレス <span class="req-badge">必須</span></label>
-      <p class="field-note">アイデアの検討結果をこちらへお送りします</p>
-      <input type="email" id="q2b" placeholder="例：hanako@hospital.jp" oninput="onEmailInput('q2b')" autocomplete="email" inputmode="email" required>
+      <input type="email" id="q2b" placeholder="hanako@hospital.jp" oninput="onEmailInput('q2b')" autocomplete="email" inputmode="email" required>
       <div class="field-fb" id="fb-q2b"></div>
     </div>
 
@@ -159,12 +155,11 @@
     <div class="step-header">
       <div class="step-num">2 / 5</div>
       <div class="pico-label-large"><span class="pico-tag-large">P</span> 誰が、どんなことに困っているか</div>
-      <p class="step-desc">具体的な場面を思い浮かべながら答えてください。</p>
     </div>
 
     <!-- Q4 -->
     <div class="field-block">
-      <label class="field-label">困っているのは主に誰ですか？ <span class="req-badge">必須</span></label>
+      <label class="field-label">主に困っているのは？ <span class="req-badge">必須</span></label>
       <div class="card-radio-group" id="q4">
         <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="患者さん" onchange="onRadioChange('q4')"><span>患者さん</span></label>
         <label class="card-radio card-radio--wide"><input type="radio" name="q4" value="自分自身・自部署のスタッフ" onchange="onRadioChange('q4')"><span>自分<br>自部署のスタッフ</span></label>
@@ -176,7 +171,7 @@
 
     <!-- Q5 -->
     <div class="field-block">
-      <label class="field-label">どのくらいの頻度で起きますか？ <span class="req-badge">必須</span></label>
+      <label class="field-label">発生頻度 <span class="req-badge">必須</span></label>
       <div class="freq-group" id="q5">
         <label class="freq-card"><input type="radio" name="q5" value="毎日複数回" onchange="onRadioChange('q5')">
           <div class="freq-dot freq-dot--5"></div><span>毎日複数回</span></label>
@@ -194,7 +189,7 @@
 
     <!-- Q6 -->
     <div class="field-block">
-      <label class="field-label">どのような影響がありますか？ <span class="req-badge">必須</span> <span class="multi-tag">複数選択可</span></label>
+      <label class="field-label">影響・リスク <span class="req-badge">必須</span> <span class="multi-tag">複数選択可</span></label>
       <div class="card-check-group" id="q6">
         <label class="card-check"><input type="checkbox" name="q6" value="医療安全の低下（インシデントリスクなど）" onchange="onCheckChange('q6')"><span>⚠️ 医療安全への影響</span></label>
         <label class="card-check"><input type="checkbox" name="q6" value="業務時間の圧迫（残業・無駄な転記作業など）" onchange="onCheckChange('q6')"><span>⏱️ 業務時間の圧迫</span></label>
@@ -211,10 +206,9 @@
 
     <!-- Q7 -->
     <div class="field-block">
-      <label class="field-label" for="q7">どんな場面で起きますか？</label>
-      <p class="field-note">「いつ・どこで・何が起きるか」を思いつくままに書いてください（任意）</p>
+      <label class="field-label" for="q7">具体的な場面 <span class="opt-badge">任意</span></label>
       <textarea id="q7"
-        placeholder="例：術後に患者さんが歩行する際、複数のチューブが引っかかって危ない場面がある"
+        placeholder="いつ・どこで・何が起きるか"
         oninput="onTextareaInput('q7')"></textarea>
       <div class="field-fb" id="fb-q7"></div>
     </div>
@@ -238,23 +232,20 @@
     <div class="step-header">
       <div class="step-num">3 / 5</div>
       <div class="pico-label-large"><span class="pico-tag-large">C</span> 今どうやって対応しているか</div>
-      <p class="step-desc">「とりあえずこうしている」という工夫も大切な情報です。</p>
     </div>
 
     <!-- Q8 -->
     <div class="field-block">
-      <label class="field-label" for="q8">現在どのように対応していますか？</label>
-      <p class="field-note">思いつく範囲で構いません（任意）</p>
+      <label class="field-label" for="q8">今の対応方法 <span class="opt-badge">任意</span></label>
       <textarea id="q8"
-        placeholder="例：テープでチューブをまとめる、担当スタッフが常に付き添う、など"
+        placeholder="例：テープでまとめる、常に付き添う"
         oninput="onTextareaInput('q8')"></textarea>
       <div class="field-fb" id="fb-q8"></div>
     </div>
 
     <!-- Q9 -->
     <div class="field-block">
-      <label class="field-label">今の対応でうまくいっていない点は？ <span class="multi-tag">複数選択可</span></label>
-      <p class="field-note">思い当たるものがあれば選んでください（任意）</p>
+      <label class="field-label">今の対応の問題点 <span class="multi-tag">複数選択可</span> <span class="opt-badge">任意</span></label>
       <div class="card-check-group" id="q9">
         <label class="card-check"><input type="checkbox" name="q9" value="手作業が多くて時間がかかる" onchange="onCheckChange('q9')"><span>⏰ 手作業が多くて時間がかかる</span></label>
         <label class="card-check"><input type="checkbox" name="q9" value="人によってやり方や精度にばらつきが出る" onchange="onCheckChange('q9')"><span>📉 やり方にばらつきが出る</span></label>
@@ -284,14 +275,13 @@
     <div class="step-header">
       <div class="step-num">4 / 5</div>
       <div class="pico-label-large"><span class="pico-tag-large">I</span> あなたのアイデア</div>
-      <p class="step-desc">完成したアイデアでなくて構いません。「なんとなくこんな感じ」でも大歓迎です。</p>
     </div>
 
     <!-- Q10 メイン自由記述 -->
     <div class="field-block idea-main-block">
-      <label class="field-label" for="q10">「こんなものがあれば解決しそう」というアイデア <span class="req-badge">必須</span></label>
+      <label class="field-label" for="q10">アイデア・ひらめき <span class="req-badge">必須</span></label>
       <textarea id="q10" class="idea-textarea" rows="5"
-        placeholder="どんな小さなことでも構いません。思いついたことをそのまま書いてください。"
+        placeholder="小さなことでもOK。思いついたことをそのまま書いてください。"
         oninput="onIdeaInput()" required></textarea>
       <div class="idea-char-count" id="ideaCharCount">0文字</div>
       <div class="field-fb" id="fb-q10"></div>
@@ -300,7 +290,6 @@
     <!-- アイデアの形（常時表示） -->
     <div class="field-block">
       <label class="field-label">解決のアプローチ <span class="multi-tag">複数選択可・任意</span></label>
-      <p class="field-note">このアイデアはどんな方法・手段で解決しようとしていますか？近いものをすべて選んでください。</p>
       <div class="icon-check-group" id="q10_type">
         <label class="icon-check"><input type="checkbox" name="q10_type" value="新しいモノ・デバイスを作る" onchange="highlightChecked('q10_type')">
           <div class="icon-check-inner"><div class="ic-emoji">🔧</div><div class="ic-text">新しいモノ<br>デバイスを作る</div></div>
@@ -328,35 +317,32 @@
 
     <!-- 具体イメージ -->
     <div class="field-block">
-      <label class="field-label" for="q10_detail">アイデアの具体的なイメージ <span class="opt-badge">任意</span></label>
-      <p class="field-note">形・大きさ・素材・使い方など、思い浮かぶことを自由に書いてください</p>
+      <label class="field-label" for="q10_detail">形・大きさ・使い方のイメージ <span class="opt-badge">任意</span></label>
       <textarea id="q10_detail" rows="3"
-        placeholder="例：手のひらサイズで軽量・スマホに通知が来る・使い捨てでコストを抑えたい など"
+        placeholder="例：手のひらサイズ・スマホに通知が来る"
         oninput="updateProgress()"></textarea>
     </div>
 
     <!-- 参考 -->
     <div class="field-block">
-      <label class="field-label" for="q10_ref">参考にしたいもの・似ているもの <span class="opt-badge">任意</span></label>
-      <p class="field-note">「これに似ている」「こういう製品がヒントになった」などがあれば教えてください</p>
+      <label class="field-label" for="q10_ref">参考・ヒントになったもの <span class="opt-badge">任意</span></label>
       <textarea id="q10_ref" rows="2"
-        placeholder="例：市販の〇〇のような形 / 他病院でこういう取り組みを聞いた など"
+        placeholder="例：市販の○○のような形、他病院の取り組みを聞いた"
         oninput="updateProgress()"></textarea>
     </div>
 
     <!-- 懸念 -->
     <div class="field-block">
-      <label class="field-label" for="q10_concern">心配な点・難しそうなこと <span class="opt-badge">任意</span></label>
-      <p class="field-note">「ここが難しそう」と感じる点があれば教えてください</p>
+      <label class="field-label" for="q10_concern">心配な点 <span class="opt-badge">任意</span></label>
       <textarea id="q10_concern" rows="2"
-        placeholder="例：滅菌が必要なので使い捨てにする必要がある / コストが高くなりそう など"
+        placeholder="例：滅菌が必要・コストが高いかも"
         oninput="updateProgress()"></textarea>
     </div>
 
     <!-- Q11 カテゴリー -->
     <div class="field-block">
       <label class="field-label">担当部門への振り分け <span class="req-badge">必須</span></label>
-      <p class="field-note">このアイデアは主にどの部門・領域に届けるべきですか？迷ったら「わからない」で大丈夫です。担当者が整理します。</p>
+      <p class="field-note">迷ったら「わからない」でOK。担当者が整理します。</p>
       <div class="card-radio-group card-radio-group--vertical" id="q11">
         <label class="card-radio card-radio--wide"><input type="radio" name="q11" value="医療機器・器具の新規開発や改良" onchange="onRadioChange('q11')"><span>🔧 医療機器・器具の開発や改良</span></label>
         <label class="card-radio card-radio--wide"><input type="radio" name="q11" value="アプリ・RPAによる業務自動化・電子化" onchange="onRadioChange('q11')"><span>💻 アプリなどによる業務の自動化・デジタル化</span></label>
@@ -385,13 +371,12 @@
   <section class="step-section" id="step4">
     <div class="step-header">
       <div class="step-num">5 / 5</div>
-      <div class="pico-label-large"><span class="pico-tag-large">O</span> このアイデアで何が変わりますか</div>
-      <p class="step-desc">どんな小さな改善でも構いません。期待できることを教えてください。</p>
+      <div class="pico-label-large"><span class="pico-tag-large">O</span> このアイデアで何が変わるか</div>
     </div>
 
     <!-- Q12 -->
     <div class="field-block">
-      <label class="field-label">改善が期待できること <span class="req-badge">必須</span> <span class="multi-tag">複数選択可</span></label>
+      <label class="field-label">期待できる改善 <span class="req-badge">必須</span> <span class="multi-tag">複数選択可</span></label>
       <div class="card-check-group" id="q12">
         <label class="card-check"><input type="checkbox" name="q12" value="インシデント件数の減少（医療安全の向上）" onchange="onCheckChange('q12')"><span>🛡️ 医療安全の向上</span></label>
         <label class="card-check"><input type="checkbox" name="q12" value="業務時間・記録時間の短縮" onchange="onCheckChange('q12')"><span>⏱️ 業務・記録時間の短縮</span></label>
@@ -408,10 +393,9 @@
 
     <!-- Q13 -->
     <div class="field-block">
-      <label class="field-label" for="q13">どのくらい良くなりそうか <span class="opt-badge">任意</span></label>
-      <p class="field-note">数字でなくても「かなり楽になる」「少し改善する」程度で構いません</p>
+      <label class="field-label" for="q13">改善規模のイメージ <span class="opt-badge">任意</span></label>
       <textarea id="q13"
-        placeholder="例：1日あたり30分の業務削減 / インシデントが減りそう / 患者さんが早く歩けるようになる など"
+        placeholder="例：1日30分削減・インシデントが減る"
         oninput="onTextareaInput('q13')"></textarea>
       <div class="field-fb" id="fb-q13"></div>
     </div>
@@ -420,8 +404,8 @@
     <div class="field-block attach-note-block">
       <div class="attach-note-icon">📎</div>
       <div>
-        <div class="field-label" style="margin-bottom:4px;">写真・資料がある場合</div>
-        <p class="field-note" style="margin:0;">現場の写真、参考製品の画像、手書きスケッチなどがあれば、<strong>メール送信時に添付</strong>してください（JPG・PNG・PDF対応）。</p>
+        <div class="field-label" style="margin-bottom:4px;">写真・資料があれば</div>
+        <p class="field-note" style="margin:0;">メール送信時に<strong>添付</strong>してください（JPG・PNG・PDF）。</p>
       </div>
     </div>
 
