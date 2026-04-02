@@ -378,6 +378,17 @@ function buildText() {
 }
 
 // ============================================================
+//  プレビュー用テキスト生成（プロフィールブロックを除外）
+// ============================================================
+function buildPreviewText() {
+  // buildText() からプロフィールブロック（見出し行＋4項目＋空行）を除去
+  return buildText().replace(
+    /\n【回答者プロフィール（アンケート）】\n[^\n]*\n[^\n]*\n[^\n]*\n[^\n]*\n/,
+    '\n'
+  );
+}
+
+// ============================================================
 //  CSV生成 - 変更なし
 // ============================================================
 function escapeCSV(v) {
@@ -507,6 +518,12 @@ function submitAll() {
   sendMail().then(() => {
     showThankModal();
     startCloseCountdown(30);
+    // 送信完了後、「入力内容を確認する」ボタンを無効化（重複送信防止）
+    const previewBtn = document.querySelector('.btn-preview');
+    if (previewBtn) {
+      previewBtn.disabled = true;
+      previewBtn.classList.add('btn-grayed');
+    }
   });
 }
 
@@ -544,7 +561,7 @@ function showPreview() {
     alert('入力内容を確認してください：\n\n' + errs.join('\n'));
     return;
   }
-  document.getElementById('previewText').textContent = buildText();
+  document.getElementById('previewText').textContent = buildPreviewText();
   const idea     = getVal('q10');
   const who      = getRadio('q4');
   const freq     = getRadio('q5');

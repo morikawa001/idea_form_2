@@ -42,36 +42,37 @@ body {
 .site-header {
   background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-light) 100%);
   color: #fff;
-  padding: 28px 24px 32px;
+  padding: 14px 16px 16px;
   position: relative;
   overflow: hidden;
 }
 .site-header::before {
   content: '';
   position: absolute;
-  top: -60px; right: -60px;
-  width: 220px; height: 220px;
+  top: -40px; right: -40px;
+  width: 140px; height: 140px;
   border-radius: 50%;
   background: rgba(255,255,255,.07);
   pointer-events: none;
 }
 .header-inner { max-width: 680px; margin: 0 auto; }
 .header-brand {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
 }
-.brand-logo { flex-shrink: 0; }
+.brand-logo { flex-shrink: 0; width: 26px; height: 26px; }
 .brand-title {
-  font-size: 1.05em; font-weight: 700;
-  letter-spacing: .03em;
+  font-size: 0.72em; font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.3;
 }
-.brand-sub { font-size: 0.80em; opacity: .75; margin-top: 1px; }
+.brand-sub { font-size: 0.62em; opacity: .75; margin-top: 1px; }
 .header-desc {
-  font-size: 0.88em;
-  line-height: 1.75;
+  font-size: 0.78em;
+  line-height: 1.65;
   background: rgba(255,255,255,.15);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
+  padding: 8px 12px;
   border: 1px solid rgba(255,255,255,.2);
 }
 
@@ -702,23 +703,91 @@ textarea { resize: vertical; min-height: 90px; }
 .btn-just-close:hover { opacity: .75; }
 
 /* ===== レスポンシブ ===== */
-@media (max-width: 600px) {
-  .site-header { padding: 20px 16px 24px; }
-  .header-brand { flex-wrap: wrap; }
-  .card-radio-group { grid-template-columns: 1fr 1fr; }
-  .card-check-group { grid-template-columns: 1fr; }
-  .icon-check-group { grid-template-columns: repeat(3, 1fr); }
-  .freq-group { flex-wrap: wrap; }
-  .freq-card { min-width: 80px; }
-  .step-nav { flex-direction: column; }
-  .btn-next, .btn-prev, .btn-preview { width: 100%; justify-content: center; }
-  .modal, .survey-modal { padding: 20px; }
-  .thank-modal { padding: 32px 20px; }
-  .main-wrap { padding: 0 12px 60px; }
-  .roadmap-inner { padding: 10px 8px; gap: 0; }
-  .rm-label { font-size: 0.55em; }
+
+/* ---- iPad / タブレット (601px〜1024px) ---- */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .main-wrap { max-width: 720px; padding: 0 24px 60px; }
+  .card-radio-group { grid-template-columns: repeat(3, 1fr); }
+  .card-check-group { grid-template-columns: repeat(2, 1fr); }
+  .icon-check-group { grid-template-columns: repeat(4, 1fr); }
+  .freq-group { gap: 8px; }
+  .site-header { padding: 12px 20px 14px; }
+  .roadmap-inner { padding: 10px 16px; }
 }
+
+/* ---- スマートフォン (〜600px) ---- */
+@media (max-width: 600px) {
+  .site-header { padding: 10px 12px 12px; }
+  .header-brand { gap: 6px; }
+  .brand-logo { width: 22px; height: 22px; }
+  .brand-title { font-size: 0.65em; }
+  .brand-sub   { font-size: 0.58em; }
+  .header-desc { font-size: 0.74em; padding: 7px 10px; }
+
+  .roadmap-inner { padding: 8px 6px; gap: 0; }
+  .rm-icon  { width: 28px; height: 28px; font-size: .85em; }
+  .rm-label { font-size: 0.50em; }
+  .roadmap-line { flex: 0 0 12px; }
+
+  .main-wrap { padding: 0 10px 60px; }
+  .step-header { padding: 20px 0 14px; }
+  .step-title  { font-size: 1.1em; }
+  .pico-label-large { font-size: 1.05em; }
+  .pico-tag-large { width: 26px; height: 26px; font-size: .9em; }
+
+  /* フィールド */
+  select, input[type="text"], input[type="email"], textarea {
+    font-size: 16px; /* iOS zoom防止 */
+    padding: 12px 14px;
+  }
+
+  /* カードUI */
+  .card-radio-group { grid-template-columns: 1fr 1fr; }
+  .card-radio { padding: 10px 12px; font-size: .88em; min-height: 46px; }
+  .card-check-group { grid-template-columns: 1fr; }
+  .card-check { padding: 11px 14px; }
+  .icon-check-group { grid-template-columns: repeat(3, 1fr); }
+  .icon-check-inner { padding: 10px 8px; }
+  .ic-emoji { font-size: 1.3em; }
+  .ic-text  { font-size: .72em; }
+
+  /* 頻度カード */
+  .freq-group { flex-wrap: wrap; gap: 7px; }
+  .freq-card  { min-width: 70px; padding: 10px 8px; font-size: .80em; }
+
+  /* ナビボタン */
+  .step-nav { flex-direction: column; gap: 10px; }
+  .btn-next, .btn-prev, .btn-preview {
+    width: 100%; justify-content: center;
+    padding: 14px 16px;
+  }
+  .sub-action-row { flex-direction: column; gap: 8px; }
+  .btn-secondary { width: 100%; text-align: center; }
+
+  /* モーダル */
+  .modal, .survey-modal { padding: 18px 14px; border-radius: 12px; }
+  .modal pre { font-size: .74em; }
+  .thank-modal { padding: 28px 16px; border-radius: 16px; }
+  .thank-title { font-size: 1.2em; }
+  .thank-body  { font-size: .86em; }
+  .btn-mail, .btn-close { padding: 12px 16px; font-size: .88em; width: 100%; }
+  .modal-btn-row { flex-direction: column; gap: 8px; }
+  .end-inner { padding: 32px 18px; }
+}
+
+/* ---- 極小端末 (〜380px) ---- */
 @media (max-width: 380px) {
   .icon-check-group { grid-template-columns: repeat(2, 1fr); }
   .card-radio-group { grid-template-columns: 1fr; }
+  .freq-card { min-width: 60px; font-size: .75em; }
+}
+
+/* ---- 送信後の「入力内容を確認する」ボタン グレーアウト ---- */
+.btn-preview:disabled,
+.btn-preview.btn-grayed {
+  background: #9e9e9e !important;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+  pointer-events: none;
 }
