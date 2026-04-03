@@ -129,13 +129,16 @@
     <div class="field-block">
       <label class="field-label">職種 <span class="req-badge">必須</span></label>
       <div class="card-radio-group" id="q3">
-        <label class="card-radio"><input type="radio" name="q3" value="医師" onchange="onRadioChange('q3')"><span>医師</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="看護師" onchange="onRadioChange('q3')"><span>看護師</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="薬剤師" onchange="onRadioChange('q3')"><span>薬剤師</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="臨床工学技士" onchange="onRadioChange('q3')"><span>臨床工学技士</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="理学療法士・作業療法士" onchange="onRadioChange('q3')"><span>理学・作業療法士</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="事務職" onchange="onRadioChange('q3')"><span>事務職</span></label>
-        <label class="card-radio"><input type="radio" name="q3" value="その他" onchange="onRadioChange('q3')"><span>その他</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="医師" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>医師</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="看護師" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>看護師</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="薬剤師" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>薬剤師</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="臨床工学技士" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>臨床工学技士</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="理学療法士・作業療法士" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>理学・作業療法士</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="事務職" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>事務職</span></label>
+        <label class="card-radio"><input type="radio" name="q3" value="その他" id="q3-other-check" onchange="onRadioChange('q3'); toggleOtherInputRadio('q3-other-check','q3-other-wrap')"><span>📝 その他</span></label>
+      </div>
+      <div class="other-input-wrap" id="q3-other-wrap">
+        <textarea id="q3-other-text" placeholder="職種を自由に書いてください" oninput="updateProgress()"></textarea>
       </div>
       <div class="field-fb" id="fb-q3"></div>
     </div>

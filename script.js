@@ -130,6 +130,15 @@ function getVal(id)    { return (document.getElementById(id) || { value: '' }).v
 function getRadio(nm)  { const el = document.querySelector(`input[name="${nm}"]:checked`); return el ? el.value : ''; }
 function getChecks(nm) { return [...document.querySelectorAll(`input[name="${nm}"]:checked`)].map(e => e.value); }
 
+function getQ3Value() {
+  const v = getRadio('q3');
+  if (v === 'その他') {
+    const other = getVal('q3-other-text');
+    return other ? `その他（${other}）` : 'その他';
+  }
+  return v || '';
+}
+
 function getQ4Value() {
   const v = getRadio('q4');
   if (v === 'その他') {
@@ -224,7 +233,7 @@ function updateProgress() {
   if (!startTime) startTime = new Date();
   const items = [
     getVal('q1'), getVal('q2'), getVal('q2b'),
-    getRadio('q3'), getQ4Value(),
+    getQ3Value(), getQ4Value(),
     getRadio('q5'), getChecks('q6').length > 0 ? '1' : '',
     getVal('q7'), getVal('q8'), getQ9Values().length > 0 ? '1' : '0',
     getVal('q10'), getRadio('q11'), getChecks('q12').length > 0 ? '1' : '', getVal('q13')
@@ -335,7 +344,7 @@ function buildText() {
     `所属部署　　　：${getVal('q1') || '（未選択）'}`,
     `氏　　名　　　：${getVal('q2') || '（未記入）'}`,
     `メールアドレス：${getVal('q2b') || '（未記入）'}`,
-    `職　　種　　　：${getRadio('q3') || '（未選択）'}`,
+    `職　　種　　　：${getQ3Value() || '（未選択）'}`,
     '',
     '【回答者プロフィール（アンケート）】',
     `年　　齢　　　：${getVal('sq0_age') || '（未選択）'}`,
@@ -452,7 +461,7 @@ function buildCsvText() {
   addRow('q1_department',       getVal('q1'));
   addRow('q2_name',             getVal('q2'));
   addRow('q2b_email',           getVal('q2b'));
-  addRow('q3_occupation',       getRadio('q3'));
+  addRow('q3_occupation',       getQ3Value());
   addRow('q4_who_suffers',      getQ4Value());
   addRow('q5_frequency',        getRadio('q5'));
   if (q6v.length > 0) { q6v.forEach((v, idx) => addRow(`q6_problem_${idx+1}`, v)); }
