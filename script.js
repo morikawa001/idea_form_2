@@ -380,21 +380,18 @@ function buildText() {
     '━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
   ];
 
-  const sq1v = getSurveyRadio('sq1');
-  if (sq1v !== '（未回答）') {
     lines.splice(lines.length - 1, 0,
       '',
       '━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
       '　アンケート回答　',
       '━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
       '',
-      `SQ1．使いやすさ　　　　　：${getSurveyRadio('sq1')}`,
-      `SQ2．整理・具体化への貢献：${getSurveyRadio('sq2')}`,
-      `SQ3．役立った部分　　　　：${getSurveyChecks('sq3')}`,
-      `SQ4．入力の手間　　　　　：${getSurveyRadio('sq4')}`,
-      `SQ5．意欲（動機）　　　　：${getSurveyRadio('sq5')}`,
-      `SQ6．自己効力感　　　　　：${getSurveyRadio('sq6_scale')}`,
-      `SQ6．改善点（自由記述）　：${getVal('sq6') || '（記入なし）'}`,
+      `SQ1．整理・具体化への貢献：${getSurveyRadio('sq1')}`,
+      `SQ2．役立った部分　　　　：${getSurveyChecks('sq2')}`,
+      `SQ3．入力の手間　　　　　：${getSurveyRadio('sq3')}`,
+      `SQ4．意欲（動機）　　　　：${getSurveyRadio('sq4')}`,
+      `SQ5．自己効力感　　　　　：${getSurveyRadio('sq5_scale')}`,
+      `SQ5．改善点（自由記述）　：${getVal('sq5') || '（記入なし）'}`,
       '',
       '━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
       '　SUS（システムユーザビリティスケール）　',
@@ -485,13 +482,12 @@ function buildCsvText() {
   addRow('sq0_it_items',        getItExperienceChecks().join(' / '));
   addRow('sq0_it_level',        getItLevelLabel() || '（未評価）');
   addRow('report_creation_time', elapsed);
-  addRow('sq1_usability',       getSurveyRadio('sq1'));
-  addRow('sq2_structuring',     getSurveyRadio('sq2'));
-  addRow('sq3_helpful',         getSurveyChecks('sq3'));
-  addRow('sq4_effort',          getSurveyRadio('sq4'));
-  addRow('sq5_motivation',      getSurveyRadio('sq5'));
-  addRow('sq6_self_efficacy',   getSurveyRadio('sq6_scale'));
-  addRow('sq6_improvement',     getVal('sq6'));
+  addRow('sq1_structuring',     getSurveyRadio('sq1')); // SQ1: 整理・具体化への貢献
+  addRow('sq2_helpful',         getSurveyChecks('sq2'));
+  addRow('sq3_effort',          getSurveyRadio('sq3'));
+  addRow('sq4_motivation',      getSurveyRadio('sq4'));
+  addRow('sq5_self_efficacy',   getSurveyRadio('sq5_scale'));
+  addRow('sq5_improvement',     getVal('sq5'));
   for (let i = 1; i <= 10; i++) addRow(`sus${i}`, getSurveyRadio(`sus${i}`));
   const susScore = calculateSusScore();
   addRow('sus_score', susScore !== null ? susScore : '（未回答）');
@@ -541,13 +537,13 @@ function submitAll() {
   if (!getVal('sq0_age'))        missing.push('・SQ0-a（年齢）');
   if (!getVal('sq0_experience')) missing.push('・SQ0-b（経験年数）');
 
-  ['sq1','sq2','sq4','sq5','sq6_scale'].forEach(name => {
+  ['sq1','sq2','sq3','sq4','sq5_scale'].forEach(name => {
     if (!document.querySelector(`input[name="${name}"]:checked`)) {
-      missing.push(`・${name === 'sq6_scale' ? 'SQ6（自己効力感）' : name.toUpperCase()}`);
+      missing.push(`・${name === 'sq5_scale' ? 'SQ5（自己効力感）' : name.toUpperCase()}`);
     }
   });
-  if (document.querySelectorAll('input[name="sq3"]:checked').length === 0) {
-    missing.push('・SQ3（役立った部分）');
+  if (document.querySelectorAll('input[name="sq2"]:checked').length === 0) {
+    missing.push('・SQ2（役立った部分）');
   }
 
   if (missing.length > 0) {
@@ -678,14 +674,13 @@ function resetForm() {
     if (ta) ta.value = '';
   });
 
-  ['sq1','sq2','sq4','sq5','sq6_scale'].forEach(n =>
+  ['sq1','sq2','sq3','sq4','sq5_scale'].forEach(n =>
     document.querySelectorAll(`input[name="${n}"]`).forEach(r => r.checked = false));
-  document.querySelectorAll('input[name="sq3"]').forEach(r => r.checked = false);
   document.querySelectorAll('input[name="sq0_it"]').forEach(r => r.checked = false);
   document.querySelectorAll('input[name="q10_type"]').forEach(r => r.checked = false);
   for (let i = 1; i <= 10; i++)
     document.querySelectorAll(`input[name="sus${i}"]`).forEach(r => r.checked = false);
-  const sq6el = document.getElementById('sq6'); if (sq6el) sq6el.value = '';
+  const sq6el = document.getElementById('sq5'); if (sq6el) sq6el.value = '';
 
   const charCount = document.getElementById('ideaCharCount');
   if (charCount) charCount.textContent = '0文字';
