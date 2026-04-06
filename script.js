@@ -411,7 +411,6 @@ function buildText() {
       `【SUSスコア合計】${getSusLabel(calculateSusScore())}`,
       ''
     );
-  }
   return lines.join('\n');
 }
 
