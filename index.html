@@ -544,7 +544,7 @@
     </div>
 
     <div class="q-block">
-      <label class="q-label">SQ1. フォームは使いやすかったですか</label>
+      <label class="q-label">SQ1. このフォームを使うことで、アイデアを整理・具体化するのに役立ちましたか</label>
       <div class="radio-group" id="sq1">
         <label><input type="radio" name="sq1" value="5" onchange="highlightSelected('sq1')"> 5：とてもそう思う</label>
         <label><input type="radio" name="sq1" value="4" onchange="highlightSelected('sq1')"> 4：ややそう思う</label>
@@ -554,27 +554,27 @@
       </div>
     </div>
     <div class="q-block">
-      <label class="q-label">SQ2. このフォームを使うことで、アイデアを整理・具体化するのに役立ちましたか</label>
-      <div class="radio-group" id="sq2">
-        <label><input type="radio" name="sq2" value="5" onchange="highlightSelected('sq2')"> 5：とてもそう思う</label>
-        <label><input type="radio" name="sq2" value="4" onchange="highlightSelected('sq2')"> 4：ややそう思う</label>
-        <label><input type="radio" name="sq2" value="3" onchange="highlightSelected('sq2')"> 3：どちらともいえない</label>
-        <label><input type="radio" name="sq2" value="2" onchange="highlightSelected('sq2')"> 2：あまりそう思わない</label>
-        <label><input type="radio" name="sq2" value="1" onchange="highlightSelected('sq2')"> 1：全くそう思わない</label>
+      <label class="q-label">SQ2. 役立ったと感じた部分はどれですか（複数選択可）</label>
+      <div class="check-group" id="sq2">
+        <label><input type="checkbox" name="sq2" value="フォームのレイアウトや入力のしやすさ" onchange="highlightChecked('sq2')"> フォームのレイアウトや入力のしやすさ</label>
+        <label><input type="checkbox" name="sq2" value="「誰が・どのくらい困っているか」を考えるきっかけになった" onchange="highlightChecked('sq2')"> 「誰が・どのくらい困っているか」を考えるきっかけになった</label>
+        <label><input type="checkbox" name="sq2" value="「今ある工夫や限界」を振り返るきっかけになった" onchange="highlightChecked('sq2')"> 「今ある工夫や限界」を振り返るきっかけになった</label>
+        <label><input type="checkbox" name="sq2" value="「実現したらどんな効果があるか」を考えるきっかけになった" onchange="highlightChecked('sq2')"> 「実現したらどんな効果があるか」を考えるきっかけになった</label>
+        <label><input type="checkbox" name="sq2" value="特になし" onchange="highlightChecked('sq2')"> 特になし</label>
       </div>
     </div>
     <div class="q-block">
-      <label class="q-label">SQ3. 役立ったと感じた部分はどれですか（複数選択可）</label>
-      <div class="check-group" id="sq3">
-        <label><input type="checkbox" name="sq3" value="フォームのレイアウトや入力のしやすさ" onchange="highlightChecked('sq3')"> フォームのレイアウトや入力のしやすさ</label>
-        <label><input type="checkbox" name="sq3" value="「誰が・どのくらい困っているか」を考えるきっかけになった" onchange="highlightChecked('sq3')"> 「誰が・どのくらい困っているか」を考えるきっかけになった</label>
-        <label><input type="checkbox" name="sq3" value="「今ある工夫や限界」を振り返るきっかけになった" onchange="highlightChecked('sq3')"> 「今ある工夫や限界」を振り返るきっかけになった</label>
-        <label><input type="checkbox" name="sq3" value="「実現したらどんな効果があるか」を考えるきっかけになった" onchange="highlightChecked('sq3')"> 「実現したらどんな効果があるか」を考えるきっかけになった</label>
-        <label><input type="checkbox" name="sq3" value="特になし" onchange="highlightChecked('sq3')"> 特になし</label>
+      <label class="q-label">SQ3. 入力に時間や手間がかかりましたか</label>
+      <div class="radio-group" id="sq3">
+        <label><input type="radio" name="sq3" value="5" onchange="highlightSelected('sq3')"> 5：とてもそう思う</label>
+        <label><input type="radio" name="sq3" value="4" onchange="highlightSelected('sq3')"> 4：ややそう思う</label>
+        <label><input type="radio" name="sq3" value="3" onchange="highlightSelected('sq3')"> 3：どちらともいえない</label>
+        <label><input type="radio" name="sq3" value="2" onchange="highlightSelected('sq3')"> 2：あまりそう思わない</label>
+        <label><input type="radio" name="sq3" value="1" onchange="highlightSelected('sq3')"> 1：全くそう思わない</label>
       </div>
     </div>
     <div class="q-block">
-      <label class="q-label">SQ4. 入力に時間や手間がかかりましたか</label>
+      <label class="q-label">SQ4. このフォームを使うことで、アイデアを提案しようという意欲が高まりましたか</label>
       <div class="radio-group" id="sq4">
         <label><input type="radio" name="sq4" value="5" onchange="highlightSelected('sq4')"> 5：とてもそう思う</label>
         <label><input type="radio" name="sq4" value="4" onchange="highlightSelected('sq4')"> 4：ややそう思う</label>
@@ -584,27 +584,17 @@
       </div>
     </div>
     <div class="q-block">
-      <label class="q-label">SQ5. このフォームを使うことで、アイデアを提案しようという意欲が高まりましたか</label>
-      <div class="radio-group" id="sq5">
-        <label><input type="radio" name="sq5" value="5" onchange="highlightSelected('sq5')"> 5：とてもそう思う</label>
-        <label><input type="radio" name="sq5" value="4" onchange="highlightSelected('sq5')"> 4：ややそう思う</label>
-        <label><input type="radio" name="sq5" value="3" onchange="highlightSelected('sq5')"> 3：どちらともいえない</label>
-        <label><input type="radio" name="sq5" value="2" onchange="highlightSelected('sq5')"> 2：あまりそう思わない</label>
-        <label><input type="radio" name="sq5" value="1" onchange="highlightSelected('sq5')"> 1：全くそう思わない</label>
-      </div>
-    </div>
-    <div class="q-block">
-      <label class="q-label">SQ6. PICOの枠に沿ってアイデアを書き進める中で、自分の考えをうまくまとめられたと感じましたか</label>
-      <div class="radio-group" id="sq6_scale">
-        <label><input type="radio" name="sq6_scale" value="5" onchange="highlightSelected('sq6_scale')"> 5：強くそう思う</label>
-        <label><input type="radio" name="sq6_scale" value="4" onchange="highlightSelected('sq6_scale')"> 4：ややそう思う</label>
-        <label><input type="radio" name="sq6_scale" value="3" onchange="highlightSelected('sq6_scale')"> 3：どちらともいえない</label>
-        <label><input type="radio" name="sq6_scale" value="2" onchange="highlightSelected('sq6_scale')"> 2：あまりそう思わない</label>
-        <label><input type="radio" name="sq6_scale" value="1" onchange="highlightSelected('sq6_scale')"> 1：全くそう思わない</label>
+      <label class="q-label">SQ5. PICOの枠に沿ってアイデアを書き進める中で、自分の考えをうまくまとめられたと感じましたか</label>
+      <div class="radio-group" id="sq5_scale">
+        <label><input type="radio" name="sq5_scale" value="5" onchange="highlightSelected('sq5_scale')"> 5：強くそう思う</label>
+        <label><input type="radio" name="sq5_scale" value="4" onchange="highlightSelected('sq5_scale')"> 4：ややそう思う</label>
+        <label><input type="radio" name="sq5_scale" value="3" onchange="highlightSelected('sq5_scale')"> 3：どちらともいえない</label>
+        <label><input type="radio" name="sq5_scale" value="2" onchange="highlightSelected('sq5_scale')"> 2：あまりそう思わない</label>
+        <label><input type="radio" name="sq5_scale" value="1" onchange="highlightSelected('sq5_scale')"> 1：全くそう思わない</label>
       </div>
       <div style="margin-top:14px;">
         <label class="q-label" style="font-weight:normal; color:#555;">📝 フォームについて改善してほしい点があれば教えてください（任意）</label>
-        <textarea id="sq6" rows="3" placeholder="自由にご記入ください" style="min-height:80px;"></textarea>
+        <textarea id="sq5" rows="3" placeholder="自由にご記入ください" style="min-height:80px;"></textarea>
       </div>
     </div>
 
